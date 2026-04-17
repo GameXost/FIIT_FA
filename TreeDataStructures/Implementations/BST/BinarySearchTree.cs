@@ -7,17 +7,21 @@ public class BinarySearchTree<TKey, TValue> : BinarySearchTreeBase<TKey, TValue,
 {
     protected override BstNode<TKey, TValue> CreateNode(TKey key, TValue value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return new BstNode<TKey, TValue>(key, value);
+        }
+        catch (OutOfMemoryException ex)
+        {
+            throw new InvalidOperationException("Not enough memory bruh");
+        }
     }
-    
+
     protected override void OnNodeAdded(BstNode<TKey, TValue> newNode)
     {
-        throw new NotImplementedException();
     }
-    
+
     protected override void OnNodeRemoved(BstNode<TKey, TValue>? parent, BstNode<TKey, TValue>? child)
     {
-        throw new NotImplementedException();
     }
-    
 }
